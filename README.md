@@ -6,9 +6,17 @@ I have been using a Basis B1 and then a Basis Peak for the last 2 years.
 
 Using [R](https://www.r-project.org/), here is what I learnt from these data.
 
+## Usage
+
+You can use my R script to do the same basic analyze I have done:
+```R
+> source('basisData.R')
+> basisData('bodymetrics.csv')
+```
+
 ## The data
 
-````R
+```R
 > head(data)
                 date calories        gsr heart.rate skin.temp steps
 1  2013-07-28 00:00Z    1.206  3.4058700         57   93.2000     0
