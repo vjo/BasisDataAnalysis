@@ -2,7 +2,7 @@
 
 I have been using a Basis B1 and then a Basis Peak for the last 2 years.
 
-[Basis](http://www.mybasis.com/) has promise an API from their early days but never published one. However, they implemented an export functionality that let you download a CSV dump of some data.
+[Basis](http://www.mybasis.com/) has promise an API from their early days but never published one. However, they implemented an [export functionality](https://support.mybasis.com/hc/en-us/articles/204142550-Exporting-Your-Data) that let you download a CSV dump of some data.
 
 Using [R](https://www.r-project.org/), here is what I learnt from these data.
 
