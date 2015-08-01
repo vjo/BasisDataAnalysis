@@ -1,40 +1,36 @@
 basisData <- function(csvFile) {
   data <- read.csv(csvFile, na.strings = "")
+  
+  ## Convert date column as Date type
   data[["date"]] <- as.Date(data[["date"]])
 
   nbMinutes <- nrow(data)
   #print(nbMinutes)
   
-  printMeanMaxMin <- function(output) {
-    print(length(output))
-    print(mean(output))
-    print(max(output))
-    print(min(output))
-  }
-  
-  meanByColName <- function(data, col) {
+  statsByColName <- function(data, col) {
     ## filter NA value
     output <- data[!is.na(data[,col]), col]
-    printMeanMaxMin(output)
-    mean(output)
+    summary(output)
   }
   
   sumByColName <- function(data, col) {
     ## filter NA value
     output <- data[!is.na(data[,col]), col]
-    printMeanMaxMin(output)
     sum(output)
   }
   
-  ## Mean Heart Rate
-  hr <- meanByColName(data, "heart.rate")
+  ## Heart Rate
+  hr <- statsByColName(data, "heart.rate")
+  print("Heart rate:")
   print(hr)
   
   ## Sum Steps
   steps <- sumByColName(data, "steps")
+  print("Sum steps:")
   print(steps)
   
-  ## Mean Skin Temp (F)
-  temp <- meanByColName(data, "skin.temp")
+  ## Skin Temp (F)
+  temp <- statsByColName(data, "skin.temp")
+  print("Skin temp:")
   print(temp)
 }
