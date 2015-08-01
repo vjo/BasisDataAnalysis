@@ -42,9 +42,9 @@ I suppose this means that for ~29 days (40,913 minutes) my watch was out of batt
 Then on the 96.1% of the time my tracker was working, I had to filter `NA` values, as I have not been wearing the watch while taking my shower, doing water activities, charging the battery and surely some hours where I forgot to put it back on my wrist.
 
 For my heart pulse, I have 864,335 measures (82%), that’s 600 days.
-My average value for this period is 66.15 beats per minute. The min value is 30 bpm (seems quite low) and max value 206 bpm.
+My average value for this period is __66.15 beats per minute__. The min value is 30 bpm (seems quite low) and max value 206 bpm.
 
-The sum of all my steps I have recorded for the period is 4,946,531 steps. This is an average of 4.8 steps per minute over 701 days or 7,056 steps per days.
+The sum of all my steps I have recorded for the period is __4,946,531 steps__. This is an average of 4.8 steps per minute over 701 days or 7,056 steps per day.
 
 ## Conclusion
 
