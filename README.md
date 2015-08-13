@@ -11,7 +11,7 @@ Using [R](https://www.r-project.org/), here is what I learnt from these data.
 You can use my R script to do the same basic analyze I have done:
 ```R
 > source('basisData.R')
-> basisData('bodymetrics.csv')
+> basicData('bodymetrics.csv')
 ```
 
 ## The data
