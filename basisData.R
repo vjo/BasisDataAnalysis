@@ -26,7 +26,7 @@ basicPlot <- function(d) {
   ## x = 24hours minutes by minutes
   ## y = steps per minute for a given minute of the day
   qplot(data=d, x=time, y=steps, color=day) + 
-    labs(x="Time 00:00 to 24:00", y="Steps / min", title="Steps per minute over 2 years") + 
+    labs(x="Time 00:00 to 24:00 (UTC)", y="Steps / min", title="Steps per minute over 2 years") + 
     scale_x_discrete(breaks=x_scale)
 }
 
@@ -38,7 +38,7 @@ histogram <- function(d) {
   
   ggplot(data=d, aes(x=time, y=steps)) + 
     geom_bar(stat="identity", fill="black", alpha=1/10) + 
-    labs(x="Time 00:00 to 24:00", y="Steps / min", title="Steps per minute over days") + 
+    labs(x="Time 00:00 to 24:00 (UTC)", y="Steps / min", title="Steps per minute over days") + 
     scale_x_discrete(breaks=x_scale) 
 }
 
