@@ -25,8 +25,8 @@ basicPlot <- function(d) {
   ## First basic plot
   ## x = 24hours minutes by minutes
   ## y = steps per minute for a given minute of the day
-  qplot(data=d, x=time, y=steps, main="Steps per minute over 2 years", color=day) + 
-    labs(x="Time 00:00 to 24:00", y="Steps / min", title="Steps per minute over days") + 
+  qplot(data=d, x=time, y=steps, color=day) + 
+    labs(x="Time 00:00 to 24:00", y="Steps / min", title="Steps per minute over 2 years") + 
     scale_x_discrete(breaks=x_scale)
 }
 
