@@ -19,7 +19,7 @@ readAndFormatData <- function(csvFile) {
   return(data)
 }
 
-pointCloudColor <- function(d) {
+stepsPointCloudColor <- function(d) {
   x_scale <- genHourScale()
   
   ## First basic plot
@@ -31,7 +31,7 @@ pointCloudColor <- function(d) {
     scale_x_discrete(breaks=x_scale)
 }
 
-pointCloudMono <- function(d) {
+stepsPointCloudMono <- function(d) {
   x_scale <- genHourScale()
   
   ggplot(d, aes(time, steps)) +
@@ -40,10 +40,16 @@ pointCloudMono <- function(d) {
     scale_x_discrete(breaks=x_scale)
 }
 
-histogram <- function(d) {
-  ## Filter a weird value where steps = 12000, WTF?!
-  d <- d %>% filter(steps < 1000)
+heartRatePointCloudMono <- function(d) {
+  x_scale <- genHourScale()
+  
+  ggplot(d, aes(time, heart.rate)) +
+    geom_point(fill="black", alpha=3/10, size=2) +
+    labs(x="Time 00:00 to 24:00 (UTC)", y="BPM", title="BPM over 24h (2 years)") + 
+    scale_x_discrete(breaks=x_scale)
+}
 
+histogram <- function(d) {
   x_scale <- genHourScale()
   
   ggplot(d, aes(time, steps)) + 
@@ -96,9 +102,10 @@ basicData <- function(d) {
 
 basisData <- function(csvFile){
   d <- readAndFormatData(csvFile)
-  
+
   #basicData(d)
-  #pointCloudColor(d)
-  pointCloudMono(d)
+  #stepsPointCloudColor(d)
+  #stepsPointCloudMono(d)
+  heartRatePointCloudMono(d)
   #histogram(d) ## XXX working on it
 }
