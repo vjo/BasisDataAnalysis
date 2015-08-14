@@ -13,19 +13,29 @@ readAndFormatData <- function(csvFile) {
   data <- data %>% mutate(time = strftime(date, format="%H:%M", tz="UTC"))
   data <- data %>% mutate(day = strftime(date, format="%Y-%m-%d", tz="UTC"))
   
+  ## Filter a weird value where steps = 12000, WTF?!
+  data <- data %>% filter(steps < 1000)
+  
   return(data)
 }
 
-basicPlot <- function(d) {
-  ## Filter a weird value where steps = 12000, WTF?!
-  d <- d %>% filter(steps < 1000)
-  
+pointCloudColor <- function(d) {
   x_scale <- genHourScale()
   
   ## First basic plot
   ## x = 24hours minutes by minutes
   ## y = steps per minute for a given minute of the day
-  qplot(data=d, x=time, y=steps, color=day) + 
+  ggplot(d, aes(time, steps, color=day)) +
+    geom_point(size=2) +
+    labs(x="Time 00:00 to 24:00 (UTC)", y="Steps / min", title="Steps per minute over 2 years") + 
+    scale_x_discrete(breaks=x_scale)
+}
+
+pointCloudMono <- function(d) {
+  x_scale <- genHourScale()
+  
+  ggplot(d, aes(time, steps)) +
+    geom_point(fill="black", alpha=3/10, size=2) +
     labs(x="Time 00:00 to 24:00 (UTC)", y="Steps / min", title="Steps per minute over 2 years") + 
     scale_x_discrete(breaks=x_scale)
 }
@@ -36,7 +46,7 @@ histogram <- function(d) {
 
   x_scale <- genHourScale()
   
-  ggplot(data=d, aes(x=time, y=steps)) + 
+  ggplot(d, aes(time, steps)) + 
     geom_bar(stat="identity", fill="black", alpha=1/10) + 
     labs(x="Time 00:00 to 24:00 (UTC)", y="Steps / min", title="Steps per minute over days") + 
     scale_x_discrete(breaks=x_scale) 
@@ -88,6 +98,7 @@ basisData <- function(csvFile){
   d <- readAndFormatData(csvFile)
   
   #basicData(d)
-  basicPlot(d)
+  #pointCloudColor(d)
+  pointCloudMono(d)
   #histogram(d) ## XXX working on it
 }
