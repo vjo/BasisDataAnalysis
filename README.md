@@ -46,6 +46,17 @@ My average value for this period is __66.15 beats per minute__. The min value is
 
 The sum of all my steps I have recorded for the period is __4,946,531 steps__. This is an average of 4.8 steps per minute over 701 days or 7,056 steps per day.
 
+### Visualization
+This is the first visualization of my data. On the `x` axis the time (24 hours) with minute granularity. On the `y` axis steps per minutes.
+
+![Steps per minutes color](./steps-per-minute_20130728-20150727.png)
+
+Each minute of the day are assign with the number of steps per minute I have made, over 701 days. Each day is represented by a color, nearest days have similar color. They also overlap each other so it creates density areas.
+
+The groups detached at the top, around 170 steps per minute are my running sessions, more often happening in the afternoon than in the morning.
+
+On the morning around 8:30, we have a very dense area which is my morning commute. My evening commute is less compact, but still around 19:00.
+
 ## Conclusion
 
 This is a very small analyze due to the lack of API of retrieve of the data a Basis tracker is recording (sleep, running, ...).
