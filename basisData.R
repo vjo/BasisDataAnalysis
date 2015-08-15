@@ -3,7 +3,7 @@ library(dplyr)
 
 readAndFormatData <- function(csvFile) {
   data <- read.csv(csvFile, na.strings = "")
-  
+
   ## Convert date column as Date type
   #data <- data %>% mutate(fulldate = as.POSIXct(date, "%Y-%m-%d %H:%M", tz="UTC"))
   #data[["date"]] <- as.Date(data[["date"]])
@@ -48,6 +48,17 @@ heartRatePointCloudMono <- function(d) {
     geom_point(fill="black", alpha=3/10, size=2) +
     labs(x="Time 00:00 to 24:00 (UTC)", y="BPM", title="BPM over 24h (2 years)") + 
     scale_x_discrete(breaks=x_scale)
+}
+
+dailyStepsHistogram <- function(d) {
+  daysOfWeek <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
+  
+  ggplot(d, aes(as.Date(day), steps, fill=strftime(day, format="%A"))) + 
+    geom_bar(stat="identity") + 
+    labs(x="Day", y="Steps / day", title="Steps per day over 2 years") +
+    scale_fill_discrete(name="Days of the week",
+                        breaks=daysOfWeek) +
+    scale_x_date(breaks="2 months")
 }
 
 stepsHistogram <- function(d) {
@@ -105,8 +116,9 @@ basisData <- function(csvFile){
   d <- readAndFormatData(csvFile)
 
   #basicData(d)
-  stepsPointCloudColor(d)
+  #stepsPointCloudColor(d)
   #stepsPointCloudMono(d)
   #heartRatePointCloudMono(d)
   #stepsHistogram(d)
+  dailyStepsHistogram(d)
 }

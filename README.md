@@ -46,20 +46,28 @@ My average value for this period is __66.15 beats per minute__. The min value is
 
 The sum of all my steps I have recorded for the period is __4,946,531 steps__. This is an average of 4.8 steps per minute over 701 days or 7,056 steps per day.
 
-### Visualization 1
-This is the first visualization of my data. On the `x` axis the time (24 hours) with minute granularity. On the `y` axis steps per minutes.
+### Visualization 1 - Steps per minute
+This is the first visualization of my data. On the `x` axis the time (24 hours) with minute granularity. On the `y` axis steps per minute.
 
-![Steps per minutes color](./steps-per-minute_20130728-20150727.png)
+![Steps per minute color](./steps-per-minute_20130728-20150727.png)
 
 Each minute of the day are assigned with a number of steps per minute and a color, over 701 days. As the multiple days overlap with each others it creates density areas.
 
 Using mono-color and alpha transparency, the different clusters and areas appear more clearly:
 
-![Steps per minutes color with alpha](./steps-per-minute_20130728-20150727_alpha.png)
+![Steps per minute with alpha](./steps-per-minute_20130728-20150727_alpha.png)
 
 Clusters detached at the top, around 170 steps per minute are my running sessions, more often happening in the afternoon than in the morning.
 
 On the morning around 8:30, we have a very dense zone which is my morning commute. My evening commute is more spread, but still around 19:00.
+
+### Visualization 2 - Steps per day
+On the `x` axis the days (2 years). On the `y` axis steps per day.
+
+![Steps per day color](./steps-per-day_20130728-20150727.png)
+
+Each days of the week are assigned with a color. The goal was to be able to find visual patterns. We can see that Saturdays, in green, generally have peaks: shopping and running day :).
+By April 2015, Wednesdays are also trending as I have been doing some sport regularly on Wednesday.
 
 ## Conclusion
 
