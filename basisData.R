@@ -27,6 +27,7 @@ stepsPointCloudColor <- function(d) {
   ## y = steps per minute for a given minute of the day
   ggplot(d, aes(time, steps, color=day)) +
     geom_point(size=2) +
+    theme(legend.position="none") +
     labs(x="Time 00:00 to 24:00 (UTC)", y="Steps / min", title="Steps per minute over 2 years") + 
     scale_x_discrete(breaks=x_scale)
 }
@@ -104,8 +105,8 @@ basisData <- function(csvFile){
   d <- readAndFormatData(csvFile)
 
   #basicData(d)
-  #stepsPointCloudColor(d)
+  stepsPointCloudColor(d)
   #stepsPointCloudMono(d)
   #heartRatePointCloudMono(d)
-  stepsHistogram(d)
+  #stepsHistogram(d)
 }
