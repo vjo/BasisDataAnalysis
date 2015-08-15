@@ -66,8 +66,8 @@ On the `x` axis the days (2 years). On the `y` axis steps per day.
 
 ![Steps per day color](./steps-per-day_20130728-20150727.png)
 
-Each days of the week are assigned with a color. The goal was to be able to find visual patterns. We can see that Saturdays, in green, generally have peaks: shopping and running day :).
-By April 2015, Wednesdays are also trending as I have been doing some sport regularly on Wednesday.
+Each days of the week are assigned with a color. The goal was to visually find patterns. We can see that Saturdays, in green, generally have peaks: shopping and running day :).
+By April 2015, Wednesdays are also trending as I have been doing some sport regularly on this day.
 
 ## Conclusion
 

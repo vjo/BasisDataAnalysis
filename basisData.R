@@ -55,7 +55,7 @@ dailyStepsHistogram <- function(d) {
   
   ggplot(d, aes(as.Date(day), steps, fill=strftime(day, format="%A"))) + 
     geom_bar(stat="identity") + 
-    labs(x="Day", y="Steps / day", title="Steps per day over 2 years") +
+    labs(x="Days", y="Steps / day", title="Steps per day over 2 years") +
     scale_fill_discrete(name="Days of the week",
                         breaks=daysOfWeek) +
     scale_x_date(breaks="2 months")
