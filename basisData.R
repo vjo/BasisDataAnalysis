@@ -49,11 +49,11 @@ heartRatePointCloudMono <- function(d) {
     scale_x_discrete(breaks=x_scale)
 }
 
-histogram <- function(d) {
+stepsHistogram <- function(d) {
   x_scale <- genHourScale()
   
   ggplot(d, aes(time, steps)) + 
-    geom_bar(stat="identity", fill="black", alpha=1/10) + 
+    geom_line(stat="identity", fill="black", alpha=1/10) + 
     labs(x="Time 00:00 to 24:00 (UTC)", y="Steps / min", title="Steps per minute over days") + 
     scale_x_discrete(breaks=x_scale) 
 }
@@ -106,6 +106,6 @@ basisData <- function(csvFile){
   #basicData(d)
   #stepsPointCloudColor(d)
   #stepsPointCloudMono(d)
-  heartRatePointCloudMono(d)
-  #histogram(d) ## XXX working on it
+  #heartRatePointCloudMono(d)
+  stepsHistogram(d)
 }
