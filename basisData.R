@@ -51,14 +51,33 @@ heartRatePointCloudMono <- function(d) {
 }
 
 dailyStepsHistogram <- function(d) {
-  daysOfWeek <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
-  
   ggplot(d, aes(as.Date(day), steps, fill=strftime(day, format="%A"))) + 
     geom_bar(stat="identity") + 
     labs(x="Days", y="Steps / day", title="Steps per day over 2 years") +
     scale_fill_discrete(name="Days of the week",
                         breaks=daysOfWeek) +
     scale_x_date(breaks="2 months")
+}
+
+avgStepsDaysOfWeekHistogram <- function(d) {
+  ## Sum steps per day and add a new `dayofweek` column
+  sumStepsPerDay <- ddply(d, "day", summarise, ssteps = sum(steps)) %>% 
+    mutate(dayofweek = strftime(day, format="%A"))
+  
+  ## For each `dayofweek` we compute the mean steps
+  meanStepsPerDayOfWeek <- ddply(sumStepsPerDay, "dayofweek", summarise, msteps = mean(ssteps))
+  
+  maxY <- max(meanStepsPerDayOfWeek$msteps)
+  
+  ggplot(meanStepsPerDayOfWeek, aes(dayofweek, msteps)) +
+    geom_bar(stat = "identity") +
+    labs(x="Days of the week",
+         y="Steps / day",
+         title="Average steps per days of the week over 2 years") +
+    scale_fill_discrete(name="Days of the week",
+                        breaks=daysOfWeek) +
+    scale_x_discrete(limits=daysOfWeek) +
+    scale_y_continuous(breaks=seq(0, maxY, 1000))
 }
 
 stepsHistogram <- function(d) {
@@ -112,13 +131,18 @@ basicData <- function(d) {
   print(temp)
 }
 
+daysOfWeek <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
+
 basisData <- function(csvFile){
   d <- readAndFormatData(csvFile)
 
+  ## Comment / uncomment according to what data you want to visualize
+  
   #basicData(d)
   #stepsPointCloudColor(d)
   #stepsPointCloudMono(d)
   #heartRatePointCloudMono(d)
   #stepsHistogram(d)
-  dailyStepsHistogram(d)
+  #dailyStepsHistogram(d)
+  avgStepsDaysOfWeekHistogram(d)
 }

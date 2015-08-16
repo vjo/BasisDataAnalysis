@@ -11,7 +11,7 @@ Using [R](https://www.r-project.org/), here is what I learnt from these data.
 You can use my R script to do the same basic analyze I have done:
 ```R
 > source('basisData.R')
-> basicData('bodymetrics.csv')
+> basisData('bodymetrics.csv')
 ```
 
 ## The data
@@ -68,6 +68,10 @@ On the `x` axis the days (2 years). On the `y` axis steps per day.
 
 Each days of the week are assigned with a color. The goal was to visually find patterns. We can see that Saturdays, in green, generally have peaks: shopping and running day :).
 By April 2015, Wednesdays are also trending as I have been doing some sport regularly on this day.
+
+The feeling about the Saturdays is confirmed by the following visualization, showing the average steps per days of the week, busy Saturday / lazy Sunday.
+
+![Average steps per days of week](./avg-steps-per-days-of-week_20130728-20150727.png)
 
 ## Conclusion
 
