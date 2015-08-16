@@ -12,6 +12,7 @@ readAndFormatData <- function(csvFile) {
   ## XXX don't know why it doesn't work in one line :(
   data <- data %>% mutate(time = strftime(date, format="%H:%M", tz="UTC"))
   data <- data %>% mutate(day = strftime(date, format="%Y-%m-%d", tz="UTC"))
+  data <- data %>% mutate(week = strftime(date, format="%Y-%W", tz="UTC"))
   
   ## Filter a weird value where steps = 12000, WTF?!
   data <- data %>% filter(steps < 1000)
@@ -57,6 +58,12 @@ dailyStepsHistogram <- function(d) {
     scale_fill_discrete(name="Days of the week",
                         breaks=daysOfWeek) +
     scale_x_date(breaks="2 months")
+}
+
+weeklyStepsHistogram <- function(d) {
+  ggplot(d, aes(week, steps)) + 
+    geom_bar(stat="identity") + 
+    labs(x="Weeks", y="Steps / week", title="Steps per week over 2 years")
 }
 
 avgStepsDaysOfWeekHistogram <- function(d) {
@@ -144,5 +151,6 @@ basisData <- function(csvFile){
   #heartRatePointCloudMono(d)
   #stepsHistogram(d)
   #dailyStepsHistogram(d)
+  #weeklyStepsHistogram(d)
   avgStepsDaysOfWeekHistogram(d)
 }
